@@ -1,0 +1,12 @@
+Bukkit plugin Short Game Mode.
+Lets you quickly set/toggle the game mode of any present or past players.
+
+Usage:
+  /gm                      # Toggles your game mode
+  /gm [player]             # Toggles [player] game mode
+  /gm set [player] [mode]  # Sets [player] mode to [mode], this works with offline players too
+
+Permission nodes:
+  sgm.set.*        # Umbrella node, gives access to both other and self
+    sgm.set.other  # Allows user to set other players game mode
+    sgm.set.self   # Allows user to set his/her own game mode

@@ -1,0 +1,21 @@
+name: Short Game Mode
+main: info.tobiaswallin.shortgm.ShortGameMode
+version: 1.0.0
+author: Bisa
+commands:
+    gm:
+        description: The Short Game Mode command
+        usage: /gm
+permissions:
+    sgm.set.*:
+        description: Allows you to set game mode of any player including yourself.
+        default: op
+        children:
+            sgm.set.other: true
+            sgm.set.self: true
+    sgm.set.other:
+        description: Allows you to set game mode of other players.
+        default: op
+    sgm.set.self:
+        description: Allows you to set your game mode.
+        default: op
