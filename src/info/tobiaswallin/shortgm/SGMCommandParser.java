@@ -20,8 +20,10 @@ public class SGMCommandParser {
 	}
 
 	private boolean parsePlayerCommand(Player player, String[] args) {
-		if (!player.hasPermission(SGMPermissions.SGM))
-			return false;
+		if (!player.hasPermission(SGMPermissions.SGM)){
+			player.sendMessage("You do not have permission do that.");
+			return true;
+		}
 
 		// Toggle game mode on self
 		if (args.length == 0 && player.hasPermission(SGMPermissions.SET_SELF)) {
