@@ -28,8 +28,7 @@ public class ShortGameMode extends JavaPlugin {
 
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String commandLabel, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("sgm")
-				|| cmd.getName().equalsIgnoreCase("gm")) {
+		if (cmd.getName().equalsIgnoreCase("gm")) {
 			return this.commandParser.Parse(sender, cmd, commandLabel, args);
 		}
 		return false;
