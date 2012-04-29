@@ -20,30 +20,28 @@ public class SGMCommandParser {
 	}
 
 	private boolean parsePlayerCommand(Player player, String[] args) {
-		if (!player.hasPermission(SGMPermissions.SGM)){
-			player.sendMessage("You do not have permission do that.");
-			return true;
-		}
-
-		// Toggle game mode on self
-		if (args.length == 0 && player.hasPermission(SGMPermissions.SET_SELF)) {
-			ShortGameMode.toggleGameMode(player);
-			return true;
-		}
-
-		// Check for argument method
-		if (args.length > 0) {
-			switch (SGMMethod.toMethod(args[0].toUpperCase())) {
-			case SET:
-				// Set game mode based on arguments
-				return setGameMode(player, args);
-			default:
-				// Toggle game mode based on arguments
-				return toggleGameMode(player, args);
+		if (player.hasPermission(SGMPermissions.SGM)) {
+			// Toggle game mode on self
+			if (args.length == 0
+					&& player.hasPermission(SGMPermissions.SET_SELF)) {
+				ShortGameMode.toggleGameMode(player);
+				return true;
+			}
+			// Check for argument method
+			if (args.length > 0) {
+				switch (SGMMethod.toMethod(args[0].toUpperCase())) {
+				case SET:
+					// Set game mode based on arguments
+					return setGameMode(player, args);
+				default:
+					// Toggle game mode based on arguments
+					return toggleGameMode(player, args);
+				}
 			}
 		}
-
-		return false;
+		
+		player.sendMessage("You do not have permission do that.");
+		return true;
 	}
 
 	private boolean toggleGameMode(Player player, String[] args) {
